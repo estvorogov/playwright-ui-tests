@@ -1,5 +1,7 @@
+import pytest
 from pages.login_page import LoginPage
 
+@pytest.mark.smoke
 def test_login_success(page):
     login = LoginPage(page)
     login.goto("https://www.saucedemo.com/")

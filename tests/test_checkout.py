@@ -1,8 +1,10 @@
+import pytest
 from pages.login_page import LoginPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 from utils.data_generator import generate_user
 
+@pytest.mark.regression
 def test_checkout_flow(page):
     login = LoginPage(page)
     cart = CartPage(page)

@@ -1,6 +1,8 @@
+import pytest
 from pages.login_page import LoginPage
 from pages.cart_page import CartPage
 
+@pytest.mark.regression
 def test_add_to_cart(page):
     login = LoginPage(page)
     cart = CartPage(page)
