@@ -1,0 +1,17 @@
+from pages.login_page import LoginPage
+from pages.cart_page import CartPage
+from pages.checkout_page import CheckoutPage
+from utils.data_generator import generate_user
+
+def test_checkout_flow(page):
+    login = LoginPage(page)
+    cart = CartPage(page)
+    checkout = CheckoutPage(page)
+    login.goto("https://www.saucedemo.com/")
+    login.login("standard_user", "secret_sauce")
+    page.click("button[name='add-to-cart-sauce-labs-backpack']")
+    cart.open_cart()
+    cart.checkout()
+    user = generate_user()
+    checkout.fill_information(user['first'], user['last'], user['zip'])
+    assert page.url.endswith("checkout-step-two.html")
